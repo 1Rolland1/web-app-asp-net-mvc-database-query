@@ -1,0 +1,49 @@
+﻿@using web_app_asp_net_mvc_database_query.Models;
+@model List<Lesson>
+
+@Html.ActionLink("Добавить запись", "Create", "Lessons")
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Название урока
+            </th>
+            <th>
+                Имя преподавателя
+            </th>
+            <th>
+                Номер урока в расписании
+            </th>
+            <th>
+                Группа, у которой проходит занятие
+            </th>
+            <th>
+                Действия
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lesson in Model)
+        {
+        <tr>
+            <td>
+                @lesson.LessonName
+            </td>
+            <td>
+                @lesson.Teacher
+            </td>
+            <td>
+                @lesson.SequentialNumber
+            </td>
+            <td>
+                @lesson.Group
+            </td>
+            <td>
+                @Html.ActionLink("Удалить", "Delete", "Lessons", new { id = lesson.Id }, new { })
+                @Html.ActionLink("Изменить", "Edit", "Lessons", new { id = lesson.Id }, new { })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
