@@ -111,7 +111,7 @@ namespace web_app_asp_net_mvc_database_query.Controllers
         {
             IDbConnection connection = new SqlConnection(_connectionString);
 
-            string cmdStr = $@"UPDATE [{connection.Database}].[dbo].[Lessons] SET [SequentialNumber] = @SequentialNumber, [LessonName] = @LessonName , [Group] = @Group, [Teacher] = @Teacher";
+            string cmdStr = $@"UPDATE [{connection.Database}].[dbo].[Lessons] SET [SequentialNumber] = @SequentialNumber, [LessonName] = @LessonName , [Group] = @Group, [Teacher] = @Teacher WHERE Id = {lesson.Id}";
             IDbCommand cmd = new SqlCommand(cmdStr);
             cmd.Connection = connection;
             connection.Open();
